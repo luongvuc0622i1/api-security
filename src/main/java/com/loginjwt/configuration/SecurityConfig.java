@@ -57,14 +57,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-        // Disable crsf cho đường dẫn /api/**
-        http.csrf().ignoringAntMatchers("/api/**");
+        // Disable crsf cho đường dẫn /**
+        http.csrf().ignoringAntMatchers("/**");
         http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
-                .antMatchers("/api/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/**").hasAnyRole(new String[]{"ADMIN", "USER"})
-                .antMatchers(HttpMethod.POST, "/api/**").hasAnyRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/**").hasAnyRole("ADMIN")
+                .antMatchers("/login").permitAll()
+//                .antMatchers(HttpMethod.GET, "/**").hasAnyRole(new String[]{"ADMIN", "USER"})
+                .antMatchers(HttpMethod.GET, "/profile/**").hasAnyRole("USER")
+                .antMatchers(HttpMethod.GET, "/**").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/**").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

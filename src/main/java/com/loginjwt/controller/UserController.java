@@ -13,12 +13,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("")
 public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -36,7 +37,7 @@ public class UserController {
     }
 
     /* ---------------- GET USER BY ID ------------------------ */
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/profile/{id}", method = RequestMethod.GET)
     public ResponseEntity<Object> getUserById(@PathVariable Long id) {
         UserDTO user = userService.findById(id);
         if (user != null) {
@@ -48,6 +49,11 @@ public class UserController {
     /* ---------------- CREATE NEW USER ------------------------ */
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public ResponseEntity<String> createUser(@RequestBody User user) {
+//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String rawPassword = "123456";
+//        String encodedPassword = passwordEncoder.encode(rawPassword);
+//        System.out.println("Mật khẩu đã mã hóa: " + encodedPassword);
+
         if (userService.add(user)) {
             return new ResponseEntity<>("Created!", HttpStatus.CREATED);
         } else {
