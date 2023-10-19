@@ -1,4 +1,4 @@
-package com.loginjwt.configuration;
+package com.loginjwt.security.configuration;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

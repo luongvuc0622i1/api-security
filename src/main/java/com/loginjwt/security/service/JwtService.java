@@ -1,6 +1,6 @@
-package com.loginjwt.service;
+package com.loginjwt.security.service;
 
-import com.loginjwt.entity.UserPrinciple;
+import com.loginjwt.security.entity.UserPrinciple;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

@@ -1,21 +1,19 @@
-package com.loginjwt.entity.dto;
+package com.loginjwt.security.entity.dto;
 
-import com.loginjwt.entity.Role;
-
-import java.util.Set;
+import com.loginjwt.management.entity.Role;
 
 public class UserDTO {
     private Long id;
     private String name;
-    private Set<Role> roles;
+    private Role role;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String name, Set<Role> roles) {
+    public UserDTO(Long id, String name, Role role) {
         this.id = id;
         this.name = name;
-        this.roles = roles;
+        this.role = role;
     }
 
     public Long getId() {
@@ -34,11 +32,11 @@ public class UserDTO {
         this.name = name;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRoles() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRoles(Role roles) {
+        this.role = roles;
     }
 }

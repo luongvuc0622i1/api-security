@@ -1,4 +1,4 @@
-package com.loginjwt.service;
+package com.loginjwt.security.service;
 
 import org.springframework.security.core.GrantedAuthority;
 

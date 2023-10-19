@@ -1,9 +1,9 @@
-package com.loginjwt.configuration;
+package com.loginjwt.security.configuration;
 
-import com.loginjwt.jwt.CustomAccessDeniedHandler;
-import com.loginjwt.jwt.JwtAuthenticationTokenFilter;
-import com.loginjwt.jwt.RestAuthenticationEntryPoint;
-import com.loginjwt.service.UserService;
+import com.loginjwt.security.jwt.CustomAccessDeniedHandler;
+import com.loginjwt.security.jwt.JwtAuthenticationTokenFilter;
+import com.loginjwt.security.jwt.RestAuthenticationEntryPoint;
+import com.loginjwt.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,10 +62,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
-//                .antMatchers(HttpMethod.GET, "/**").hasAnyRole(new String[]{"ADMIN", "USER"})
-                .antMatchers(HttpMethod.GET, "/profile/**").hasAnyRole("USER")
+                .antMatchers(HttpMethod.GET, "/profile/**").hasAnyRole(new String[]{"ADMIN", "USER"})
                 .antMatchers(HttpMethod.GET, "/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/**").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();

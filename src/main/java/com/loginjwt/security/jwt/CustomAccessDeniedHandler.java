@@ -1,4 +1,4 @@
-package com.loginjwt.jwt;
+package com.loginjwt.security.jwt;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

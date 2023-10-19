@@ -1,5 +1,6 @@
-package com.loginjwt.entity;
+package com.loginjwt.security.entity;
 
+import com.loginjwt.management.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,9 +24,7 @@ public class UserPrinciple implements UserDetails {
 
     public static UserPrinciple build(User user) {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (Role role : user.getRoles()) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
+        authorities.add(new SimpleGrantedAuthority(user.getRole().getName()));
 
         return new UserPrinciple(user.getUsername(),
                 user.getPassword(),authorities);
