@@ -1,4 +1,4 @@
--- CREATE DATABASE nextg-register-service;
+-- CREATE DATABASE nextg_register_service;
 
 CREATE TABLE role (
                                  id INT AUTO_INCREMENT PRIMARY KEY,
