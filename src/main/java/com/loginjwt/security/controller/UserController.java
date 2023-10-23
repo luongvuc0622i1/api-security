@@ -1,6 +1,7 @@
 package com.loginjwt.security.controller;
 
 import com.loginjwt.management.entity.User;
+import com.loginjwt.security.entity.MessageResponse;
 import com.loginjwt.security.service.JwtResponse;
 import com.loginjwt.security.service.JwtService;
 import com.loginjwt.security.service.UserService;
@@ -33,6 +34,13 @@ public class UserController {
         String jwt = jwtService.generateTokenLogin(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         User userInfo = userService.findByUsername(user.getUsername());
+
+        if (userInfo.getStatus() != null) {
+            if (userInfo.getStatus() == 0) {
+                return ResponseEntity.ok(new MessageResponse("lock"));
+            }
+        }
+
         return ResponseEntity.ok(new JwtResponse(userInfo.getId(), jwt,
                 userInfo.getUsername(), userInfo.getUsername(), userDetails.getAuthorities()));
     }
