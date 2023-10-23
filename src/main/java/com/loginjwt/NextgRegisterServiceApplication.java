@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LoginJwtApplication {
+public class NextgRegisterServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LoginJwtApplication.class, args);
+        SpringApplication.run(NextgRegisterServiceApplication.class, args);
     }
 
 }

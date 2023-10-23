@@ -1,4 +1,4 @@
--- CREATE DATABASE employee_management;
+-- CREATE DATABASE nextg-register-service;
 
 CREATE TABLE role (
                                  id INT AUTO_INCREMENT PRIMARY KEY,
